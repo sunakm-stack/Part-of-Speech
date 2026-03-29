@@ -6,126 +6,349 @@
 <title>중1 영어 8품사 수업 최종 완성본</title>
 <style>
 :root {
-  --bg:#f3f6fb; --card:#ffffff; --line:#d9e2ef; --text:#0f172a; --muted:#64748b;
-  --nav:#0f172a; --blue:#4f8df7; --red:#ef5d72; --green:#3eb489; --yellow:#f2c14e;
-  --purple:#8b5cf6; --brown:#8b5e3c; --black:#334155; --orange:#f5852f;
+  --bg:#f3f6fb;
+  --card:#ffffff;
+  --line:#d9e2ef;
+  --text:#0f172a;
+  --muted:#64748b;
+
+  --nav:#0f172a;
+  --blue:#4f8df7;
+  --red:#ef5d72;
+  --green:#3eb489;
+  --yellow:#f2c14e;
+  --purple:#8b5cf6;
+  --brown:#8b5e3c;
+  --black:#334155;
+  --orange:#f5852f;
+
+  /* 8품사 전용 색 */
+  --noun:#2563eb;         /* 명사 - 파란색 */
+  --pronoun:#38bdf8;      /* 대명사 - 하늘색 */
+  --verb:#f5852f;         /* 동사 - 주황색 */
+  --adjective:#f2c14e;    /* 형용사 - 노란색 */
+  --adverb:#22c55e;       /* 부사 - 녹색 */
+  --preposition:#8b5cf6;  /* 전치사 - 보라색 */
+  --conjunction:#ef4444;  /* 접속사 - 빨간색 */
+  --interjection:#ffffff; /* 감탄사 - 흰색 */
 }
+
 * { box-sizing:border-box; }
-body { margin:0; font-family:Arial,"Malgun Gothic",sans-serif; color:var(--text); background:linear-gradient(180deg,#eef4ff 0%,#f8fbff 38%,#f3f6fb 100%); }
+
+body {
+  margin:0;
+  font-family:Arial,"Malgun Gothic",sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#eef4ff 0%,#f8fbff 38%,#f3f6fb 100%);
+}
+
 header {
   background:linear-gradient(135deg,#102a56,#2563eb 58%,#38bdf8);
-  color:#fff; padding:22px 18px 26px;
+  color:#fff;
+  padding:22px 18px 26px;
   box-shadow:0 12px 30px rgba(15,23,42,.18);
 }
 header .inner { max-width:1180px; margin:0 auto; }
 header h1 { margin:0; font-size:28px; }
 header p { margin:8px 0 0; font-size:14px; opacity:.95; }
+
 .wrap { max-width:1180px; margin:0 auto; padding:18px; }
+
 .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
 .tab {
-  border:none; background:#e8eef9; color:#0f172a; padding:10px 14px; border-radius:999px;
-  font-weight:800; cursor:pointer; box-shadow:0 2px 8px rgba(15,23,42,.05);
+  border:none;
+  background:#e8eef9;
+  color:#0f172a;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 2px 8px rgba(15,23,42,.05);
 }
 .tab.active { background:#0f172a; color:#fff; }
+
 .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
-.col-3 { grid-column:span 3; } .col-4 { grid-column:span 4; } .col-5 { grid-column:span 5; }
-.col-6 { grid-column:span 6; } .col-7 { grid-column:span 7; } .col-8 { grid-column:span 8; }
+.col-3 { grid-column:span 3; }
+.col-4 { grid-column:span 4; }
+.col-5 { grid-column:span 5; }
+.col-6 { grid-column:span 6; }
+.col-7 { grid-column:span 7; }
+.col-8 { grid-column:span 8; }
 .col-12 { grid-column:span 12; }
-@media (max-width:900px) { .col-3,.col-4,.col-5,.col-6,.col-7,.col-8 { grid-column:span 12; } }
+
+@media (max-width:900px) {
+  .col-3,.col-4,.col-5,.col-6,.col-7,.col-8 { grid-column:span 12; }
+}
+
 .card {
-  background:var(--card); border:1px solid var(--line); border-radius:20px; padding:16px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
   box-shadow:0 12px 28px rgba(15,23,42,.06);
 }
 .card h2 { margin:0 0 10px; font-size:20px; }
 .card h3 { margin:0 0 10px; font-size:16px; }
+
 .muted { color:var(--muted); font-size:13px; }
-label { display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
+
+label {
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
 input, select, textarea, button { font:inherit; }
+
 input, select, textarea {
-  width:100%; border:1px solid #cfd8e7; border-radius:14px; background:#fff;
+  width:100%;
+  border:1px solid #cfd8e7;
+  border-radius:14px;
+  background:#fff;
   padding:10px 12px;
 }
-textarea { min-height:120px; resize:vertical; }
+
+textarea {
+  min-height:120px;
+  resize:vertical;
+}
+
 .btn {
-  border:none; border-radius:14px; padding:11px 14px; cursor:pointer; font-weight:800;
+  border:none;
+  border-radius:14px;
+  padding:11px 14px;
+  cursor:pointer;
+  font-weight:800;
 }
 .btn.primary { background:#2563eb; color:#fff; }
 .btn.secondary { background:#e0ecff; color:#1133aa; }
 .btn.ghost { background:#fff; color:#0f172a; border:1px solid #d1d5db; }
 .btn.good { background:#16a34a; color:#fff; }
-.legend { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-@media (max-width:700px) { .legend { grid-template-columns:repeat(2,1fr); } }
-.pill { padding:12px 10px; border-radius:16px; color:#fff; font-weight:800; text-align:center; }
-  
-.yellow{background:var(--yellow); color:#222}  
- 
+
+.legend {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+@media (max-width:700px) {
+  .legend { grid-template-columns:repeat(2,1fr); }
+}
+
+.pill {
+  padding:12px 10px;
+  border-radius:16px;
+  font-weight:800;
+  text-align:center;
+  border:1px solid rgba(15,23,42,.08);
+  box-shadow:0 4px 10px rgba(15,23,42,.04);
+}
+
 .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-@media (max-width:900px) { .kpis { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:900px) {
+  .kpis { grid-template-columns:repeat(2,1fr); }
+}
 .kpi {
-  background:linear-gradient(180deg,#ffffff,#f8fbff); border:1px solid #d8e5f7; border-radius:18px; padding:14px;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid #d8e5f7;
+  border-radius:18px;
+  padding:14px;
 }
 .kpi .label { color:#64748b; font-size:13px; font-weight:700; }
 .kpi .num { font-size:28px; font-weight:900; margin-top:6px; }
-.progress-wrap { height:12px; background:#e5edf9; border-radius:999px; overflow:hidden; }
-.progress-bar { height:12px; width:0%; background:linear-gradient(90deg,#2563eb,#38bdf8); }
-.question-box {
-  background:linear-gradient(180deg,#f8fbff,#eef4ff); border:1px solid #d9e7fb; border-radius:18px; padding:18px;
+
+.progress-wrap {
+  height:12px;
+  background:#e5edf9;
+  border-radius:999px;
+  overflow:hidden;
 }
-.question { font-size:30px; font-weight:900; margin:12px 0; }
+.progress-bar {
+  height:12px;
+  width:0%;
+  background:linear-gradient(90deg,#2563eb,#38bdf8);
+}
+
+.question-box {
+  background:linear-gradient(180deg,#f8fbff,#eef4ff);
+  border:1px solid #d9e7fb;
+  border-radius:18px;
+  padding:18px;
+}
+.question {
+  font-size:30px;
+  font-weight:900;
+  margin:12px 0;
+}
+
 .choices { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
-@media (max-width:700px) { .choices { grid-template-columns:1fr; } }
+@media (max-width:700px) {
+  .choices { grid-template-columns:1fr; }
+}
+
 .choice {
-  padding:16px; border-radius:16px; border:2px solid #dbe6f7; background:#fff; cursor:pointer;
-  font-size:18px; font-weight:800; text-align:center; transition:.15s ease;
+  padding:16px;
+  border-radius:16px;
+  border:2px solid #dbe6f7;
+  background:#fff;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:800;
+  text-align:center;
+  transition:.15s ease;
 }
 .choice:hover { transform:translateY(-1px); }
-.choice.correct { background:#dcfce7; border-color:#16a34a; }
-.choice.wrong { background:#fee2e2; border-color:#dc2626; }
+.choice.correct { background:#dcfce7 !important; border-color:#16a34a !important; color:#14532d !important; }
+.choice.wrong { background:#fee2e2 !important; border-color:#dc2626 !important; color:#7f1d1d !important; }
+
 .badge {
-  display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
-  background:#eef2ff; color:#3730a3; margin-right:6px; margin-bottom:6px;
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  background:#eef2ff;
+  color:#3730a3;
+  margin-right:6px;
+  margin-bottom:6px;
 }
-.rank-table, .simple-table { width:100%; border-collapse:collapse; }
+
+.rank-table, .simple-table {
+  width:100%;
+  border-collapse:collapse;
+}
 .rank-table th, .rank-table td, .simple-table th, .simple-table td {
-  border-bottom:1px solid #e5e7eb; padding:10px; text-align:left; font-size:14px;
+  border-bottom:1px solid #e5e7eb;
+  padding:10px;
+  text-align:left;
+  font-size:14px;
+  vertical-align:top;
 }
 .rank-table th, .simple-table th { background:#f8fafc; }
+
 .rank-top1 { background:#fff9db; }
 .rank-top2 { background:#f8fafc; }
 .rank-top3 { background:#fff1f2; }
+
 .podium {
-  display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; align-items:end; margin-bottom:14px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  align-items:end;
+  margin-bottom:14px;
 }
 .podium .box {
-  border-radius:18px; padding:12px; text-align:center; font-weight:800; border:1px solid #dbe3ef; background:#fff;
+  border-radius:18px;
+  padding:12px;
+  text-align:center;
+  font-weight:800;
+  border:1px solid #dbe3ef;
+  background:#fff;
 }
 .podium .first { min-height:150px; background:linear-gradient(180deg,#fff7cc,#ffe082); }
 .podium .second { min-height:124px; background:linear-gradient(180deg,#f8fafc,#e5e7eb); }
 .podium .third { min-height:112px; background:linear-gradient(180deg,#fff1f2,#fecdd3); }
+
 .sentence-preview {
-  font-size:24px; font-weight:900; background:#fcfdff; border:2px dashed #cfd8e7; padding:16px;
+  font-size:24px;
+  font-weight:900;
+  background:#fcfdff;
+  border:2px dashed #cfd8e7;
+  padding:16px;
   border-radius:18px;
+  min-height:72px;
 }
+
 .level-card {
-  border-radius:18px; padding:14px; color:#0f172a; border:1px solid #dbe3ef; margin-bottom:10px;
+  border-radius:18px;
+  padding:14px;
+  color:#0f172a;
+  border:1px solid #dbe3ef;
+  margin-bottom:10px;
 }
-.level-5{background:#dcfce7} .level-4{background:#ecfccb} .level-3{background:#fef3c7}
-.level-2{background:#fde68a} .level-1{background:#fecaca}
+.level-5{background:#dcfce7}
+.level-4{background:#ecfccb}
+.level-3{background:#fef3c7}
+.level-2{background:#fde68a}
+.level-1{background:#fecaca}
+
 .footer-note { font-size:12px; color:#64748b; }
-.choice-ko{display:block;font-size:18px;font-weight:800;line-height:1.2;}
-.choice-en{display:block;font-size:12px;letter-spacing:1px;opacity:.78;margin-top:4px;}
-.noun{background:var(--noun); color:white;}
-  .pronoun{background:var(--pronoun); color:white;}
-  .verb{background:var(--verb); color:white;}
-  .adjective{background:var(--adjective); color:#222;}
-  .adverb{background:var(--adverb); color:white;}
-  .preposition{background:var(--preposition); color:white;}
-  .conjunction{background:var(--conjunction); color:white;}
-  .interjection{background:var(--interjection); color:#222; border:2px solid #cbd5e1;}
-  .pill-ko{display:block;font-size:16px;font-weight:800;line-height:1.2;}
-.pill-en{display:block;font-size:12px;letter-spacing:1px;opacity:.9;margin-top:4px;}
-.teacher-badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ede9fe;color:#5b21b6;font-size:12px;font-weight:800;margin-left:8px;}
+
+.choice-ko {
+  display:block;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.2;
+}
+.choice-en {
+  display:block;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:.78;
+  margin-top:4px;
+}
+
+.pill-ko {
+  display:block;
+  font-size:16px;
+  font-weight:800;
+  line-height:1.2;
+}
+.pill-en {
+  display:block;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:.9;
+  margin-top:4px;
+}
+
+.teacher-badge {
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#ede9fe;
+  color:#5b21b6;
+  font-size:12px;
+  font-weight:800;
+  margin-left:8px;
+}
+
 .hidden { display:none; }
+
+/* 8품사 색상 */
+.noun {
+  background:var(--noun);
+  color:#fff;
+}
+.pronoun {
+  background:var(--pronoun);
+  color:#fff;
+}
+.verb {
+  background:var(--verb);
+  color:#fff;
+}
+.adjective {
+  background:var(--adjective);
+  color:#222;
+}
+.adverb {
+  background:var(--adverb);
+  color:#fff;
+}
+.preposition {
+  background:var(--preposition);
+  color:#fff;
+}
+.conjunction {
+  background:var(--conjunction);
+  color:#fff;
+}
+.interjection {
+  background:var(--interjection);
+  color:#222;
+  border:2px solid #cbd5e1;
+}
 </style>
 </head>
 <body>
@@ -164,6 +387,7 @@ textarea { min-height:120px; resize:vertical; }
             <button class="btn secondary" onclick="resetStudentOnly()">현재 학생 기록 초기화</button>
           </div>
           <p class="muted" id="profileMsg"></p>
+
           <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #d6deeb;">
             <h3 style="margin-bottom:8px;">교사 전용 모드 <span class="teacher-badge" id="teacherModeBadge">잠금</span></h3>
             <p class="muted">학생 화면에서는 NEIS 탭이 보이지 않습니다. 교사만 비밀번호를 입력해 열 수 있습니다.</p>
@@ -179,15 +403,15 @@ textarea { min-height:120px; resize:vertical; }
           <h2>8품사 색깔 규칙</h2>
           <div class="legend">
             <div class="pill noun"><span class="pill-ko">명사</span><span class="pill-en">NOUN</span></div>
+            <div class="pill pronoun"><span class="pill-ko">대명사</span><span class="pill-en">PRONOUN</span></div>
             <div class="pill verb"><span class="pill-ko">동사</span><span class="pill-en">VERB</span></div>
             <div class="pill adjective"><span class="pill-ko">형용사</span><span class="pill-en">ADJECTIVE</span></div>
             <div class="pill adverb"><span class="pill-ko">부사</span><span class="pill-en">ADVERB</span></div>
-            <div class="pill pronoun"><span class="pill-ko">대명사</span><span class="pill-en">PRONOUN</span></div>
             <div class="pill preposition"><span class="pill-ko">전치사</span><span class="pill-en">PREPOSITION</span></div>
             <div class="pill conjunction"><span class="pill-ko">접속사</span><span class="pill-en">CONJUNCTION</span></div>
             <div class="pill interjection"><span class="pill-ko">감탄사</span><span class="pill-en">INTERJECTION</span></div>
           </div>
-          <p class="footer-note" style="margin-top:10px;">기억 문장: 파랑은 이름, 빨강은 행동, 초록은 꾸미기.</p>
+          <p class="footer-note" style="margin-top:10px;">기억 문장: 파랑은 이름, 주황은 행동, 초록은 꾸미기.</p>
         </div>
       </div>
 
@@ -373,10 +597,104 @@ textarea { min-height:120px; resize:vertical; }
 </div>
 
 <script>
-const STORAGE_KEY = "teacher_final_pos_package_v3";
+const STORAGE_KEY = "teacher_final_pos_package_v4";
 const TEACHER_PASSWORD = "9324";
-const POS_EN = {"명사":"NOUN","동사":"VERB","형용사":"ADJECTIVE","부사":"ADVERB","대명사":"PRONOUN","전치사":"PREPOSITION","접속사":"CONJUNCTION","감탄사":"INTERJECTION"};
-const quizData = [{"q": "school", "answer": "명사", "choices": ["형용사", "부사", "명사", "동사"]}, {"q": "teacher", "answer": "명사", "choices": ["부사", "명사", "동사", "형용사"]}, {"q": "friend", "answer": "명사", "choices": ["형용사", "부사", "명사", "동사"]}, {"q": "library", "answer": "명사", "choices": ["부사", "명사", "동사", "형용사"]}, {"q": "breakfast", "answer": "명사", "choices": ["동사", "형용사", "부사", "명사"]}, {"q": "soccer", "answer": "명사", "choices": ["형용사", "부사", "명사", "동사"]}, {"q": "music", "answer": "명사", "choices": ["동사", "형용사", "부사", "명사"]}, {"q": "homework", "answer": "명사", "choices": ["명사", "동사", "형용사", "부사"]}, {"q": "study", "answer": "동사", "choices": ["명사", "형용사", "부사", "동사"]}, {"q": "play", "answer": "동사", "choices": ["동사", "명사", "형용사", "부사"]}, {"q": "like", "answer": "동사", "choices": ["동사", "명사", "형용사", "부사"]}, {"q": "visit", "answer": "동사", "choices": ["명사", "형용사", "부사", "동사"]}, {"q": "make", "answer": "동사", "choices": ["동사", "명사", "형용사", "부사"]}, {"q": "read", "answer": "동사", "choices": ["동사", "명사", "형용사", "부사"]}, {"q": "write", "answer": "동사", "choices": ["명사", "형용사", "부사", "동사"]}, {"q": "help", "answer": "동사", "choices": ["동사", "명사", "형용사", "부사"]}, {"q": "happy", "answer": "형용사", "choices": ["명사", "동사", "부사", "형용사"]}, {"q": "kind", "answer": "형용사", "choices": ["형용사", "명사", "동사", "부사"]}, {"q": "busy", "answer": "형용사", "choices": ["형용사", "명사", "동사", "부사"]}, {"q": "tall", "answer": "형용사", "choices": ["형용사", "명사", "동사", "부사"]}, {"q": "small", "answer": "형용사", "choices": ["명사", "동사", "부사", "형용사"]}, {"q": "hungry", "answer": "형용사", "choices": ["동사", "부사", "형용사", "명사"]}, {"q": "tired", "answer": "형용사", "choices": ["명사", "동사", "부사", "형용사"]}, {"q": "beautiful", "answer": "형용사", "choices": ["명사", "동사", "부사", "형용사"]}, {"q": "quickly", "answer": "부사", "choices": ["형용사", "부사", "명사", "동사"]}, {"q": "slowly", "answer": "부사", "choices": ["동사", "형용사", "부사", "명사"]}, {"q": "carefully", "answer": "부사", "choices": ["명사", "동사", "형용사", "부사"]}, {"q": "always", "answer": "부사", "choices": ["동사", "형용사", "부사", "명사"]}, {"q": "often", "answer": "부사", "choices": ["명사", "동사", "형용사", "부사"]}, {"q": "very", "answer": "부사", "choices": ["부사", "명사", "동사", "형용사"]}, {"q": "well", "answer": "부사", "choices": ["부사", "명사", "동사", "형용사"]}, {"q": "today", "answer": "부사", "choices": ["명사", "동사", "형용사", "부사"]}, {"q": "I (나)", "answer": "대명사", "choices": ["명사", "동사", "형용사", "대명사"]}, {"q": "you", "answer": "대명사", "choices": ["형용사", "대명사", "명사", "동사"]}, {"q": "he", "answer": "대명사", "choices": ["동사", "형용사", "대명사", "명사"]}, {"q": "she", "answer": "대명사", "choices": ["형용사", "대명사", "명사", "동사"]}, {"q": "it", "answer": "대명사", "choices": ["동사", "형용사", "대명사", "명사"]}, {"q": "we", "answer": "대명사", "choices": ["동사", "형용사", "대명사", "명사"]}, {"q": "they", "answer": "대명사", "choices": ["대명사", "명사", "동사", "형용사"]}, {"q": "myself", "answer": "대명사", "choices": ["동사", "형용사", "대명사", "명사"]}, {"q": "in", "answer": "전치사", "choices": ["동사", "형용사", "전치사", "명사"]}, {"q": "on", "answer": "전치사", "choices": ["동사", "형용사", "전치사", "명사"]}, {"q": "under", "answer": "전치사", "choices": ["명사", "동사", "형용사", "전치사"]}, {"q": "after", "answer": "전치사", "choices": ["명사", "동사", "형용사", "전치사"]}, {"q": "before", "answer": "전치사", "choices": ["동사", "형용사", "전치사", "명사"]}, {"q": "with", "answer": "전치사", "choices": ["전치사", "명사", "동사", "형용사"]}, {"q": "from", "answer": "전치사", "choices": ["전치사", "명사", "동사", "형용사"]}, {"q": "behind", "answer": "전치사", "choices": ["동사", "형용사", "전치사", "명사"]}, {"q": "and", "answer": "접속사", "choices": ["형용사", "접속사", "명사", "동사"]}, {"q": "but", "answer": "접속사", "choices": ["형용사", "접속사", "명사", "동사"]}, {"q": "or", "answer": "접속사", "choices": ["동사", "형용사", "접속사", "명사"]}, {"q": "because", "answer": "접속사", "choices": ["형용사", "접속사", "명사", "동사"]}, {"q": "so", "answer": "접속사", "choices": ["동사", "형용사", "접속사", "명사"]}, {"q": "when", "answer": "접속사", "choices": ["접속사", "명사", "동사", "형용사"]}, {"q": "if", "answer": "접속사", "choices": ["동사", "형용사", "접속사", "명사"]}, {"q": "while", "answer": "접속사", "choices": ["명사", "동사", "형용사", "접속사"]}, {"q": "wow", "answer": "감탄사", "choices": ["형용사", "감탄사", "명사", "동사"]}, {"q": "ah", "answer": "감탄사", "choices": ["동사", "형용사", "감탄사", "명사"]}, {"q": "hey", "answer": "감탄사", "choices": ["형용사", "감탄사", "명사", "동사"]}, {"q": "oops", "answer": "감탄사", "choices": ["감탄사", "명사", "동사", "형용사"]}, {"q": "hurray", "answer": "감탄사", "choices": ["동사", "형용사", "감탄사", "명사"]}, {"q": "ouch", "answer": "감탄사", "choices": ["감탄사", "명사", "동사", "형용사"]}, {"q": "well done", "answer": "감탄사", "choices": ["명사", "동사", "형용사", "감탄사"]}, {"q": "bravo", "answer": "감탄사", "choices": ["명사", "동사", "형용사", "감탄사"]}];
+
+const POS_EN = {
+  "명사":"NOUN",
+  "대명사":"PRONOUN",
+  "동사":"VERB",
+  "형용사":"ADJECTIVE",
+  "부사":"ADVERB",
+  "전치사":"PREPOSITION",
+  "접속사":"CONJUNCTION",
+  "감탄사":"INTERJECTION"
+};
+
+const posMeta = {
+  noun: { ko:"명사", cls:"noun" },
+  pronoun: { ko:"대명사", cls:"pronoun" },
+  verb: { ko:"동사", cls:"verb" },
+  adjective: { ko:"형용사", cls:"adjective" },
+  adverb: { ko:"부사", cls:"adverb" },
+  preposition: { ko:"전치사", cls:"preposition" },
+  conjunction: { ko:"접속사", cls:"conjunction" },
+  interjection: { ko:"감탄사", cls:"interjection" }
+};
+
+const quizData = [
+  {"q":"school","answer":"명사","choices":["형용사","부사","명사","동사"]},
+  {"q":"teacher","answer":"명사","choices":["부사","명사","동사","형용사"]},
+  {"q":"friend","answer":"명사","choices":["형용사","부사","명사","동사"]},
+  {"q":"library","answer":"명사","choices":["부사","명사","동사","형용사"]},
+  {"q":"breakfast","answer":"명사","choices":["동사","형용사","부사","명사"]},
+  {"q":"soccer","answer":"명사","choices":["형용사","부사","명사","동사"]},
+  {"q":"music","answer":"명사","choices":["동사","형용사","부사","명사"]},
+  {"q":"homework","answer":"명사","choices":["명사","동사","형용사","부사"]},
+
+  {"q":"study","answer":"동사","choices":["명사","형용사","부사","동사"]},
+  {"q":"play","answer":"동사","choices":["동사","명사","형용사","부사"]},
+  {"q":"like","answer":"동사","choices":["동사","명사","형용사","부사"]},
+  {"q":"visit","answer":"동사","choices":["명사","형용사","부사","동사"]},
+  {"q":"make","answer":"동사","choices":["동사","명사","형용사","부사"]},
+  {"q":"read","answer":"동사","choices":["동사","명사","형용사","부사"]},
+  {"q":"write","answer":"동사","choices":["명사","형용사","부사","동사"]},
+  {"q":"help","answer":"동사","choices":["동사","명사","형용사","부사"]},
+
+  {"q":"happy","answer":"형용사","choices":["명사","동사","부사","형용사"]},
+  {"q":"kind","answer":"형용사","choices":["형용사","명사","동사","부사"]},
+  {"q":"busy","answer":"형용사","choices":["형용사","명사","동사","부사"]},
+  {"q":"tall","answer":"형용사","choices":["형용사","명사","동사","부사"]},
+  {"q":"small","answer":"형용사","choices":["명사","동사","부사","형용사"]},
+  {"q":"hungry","answer":"형용사","choices":["동사","부사","형용사","명사"]},
+  {"q":"tired","answer":"형용사","choices":["명사","동사","부사","형용사"]},
+  {"q":"beautiful","answer":"형용사","choices":["명사","동사","부사","형용사"]},
+
+  {"q":"quickly","answer":"부사","choices":["형용사","부사","명사","동사"]},
+  {"q":"slowly","answer":"부사","choices":["동사","형용사","부사","명사"]},
+  {"q":"carefully","answer":"부사","choices":["명사","동사","형용사","부사"]},
+  {"q":"always","answer":"부사","choices":["동사","형용사","부사","명사"]},
+  {"q":"often","answer":"부사","choices":["명사","동사","형용사","부사"]},
+  {"q":"very","answer":"부사","choices":["부사","명사","동사","형용사"]},
+  {"q":"well","answer":"부사","choices":["부사","명사","동사","형용사"]},
+  {"q":"today","answer":"부사","choices":["명사","동사","형용사","부사"]},
+
+  {"q":"I (나)","answer":"대명사","choices":["명사","동사","형용사","대명사"]},
+  {"q":"you","answer":"대명사","choices":["형용사","대명사","명사","동사"]},
+  {"q":"he","answer":"대명사","choices":["동사","형용사","대명사","명사"]},
+  {"q":"she","answer":"대명사","choices":["형용사","대명사","명사","동사"]},
+  {"q":"it","answer":"대명사","choices":["동사","형용사","대명사","명사"]},
+  {"q":"we","answer":"대명사","choices":["동사","형용사","대명사","명사"]},
+  {"q":"they","answer":"대명사","choices":["대명사","명사","동사","형용사"]},
+  {"q":"myself","answer":"대명사","choices":["동사","형용사","대명사","명사"]},
+
+  {"q":"in","answer":"전치사","choices":["동사","형용사","전치사","명사"]},
+  {"q":"on","answer":"전치사","choices":["동사","형용사","전치사","명사"]},
+  {"q":"under","answer":"전치사","choices":["명사","동사","형용사","전치사"]},
+  {"q":"after","answer":"전치사","choices":["명사","동사","형용사","전치사"]},
+  {"q":"before","answer":"전치사","choices":["동사","형용사","전치사","명사"]},
+  {"q":"with","answer":"전치사","choices":["전치사","명사","동사","형용사"]},
+  {"q":"from","answer":"전치사","choices":["전치사","명사","동사","형용사"]},
+  {"q":"behind","answer":"전치사","choices":["동사","형용사","전치사","명사"]},
+
+  {"q":"and","answer":"접속사","choices":["형용사","접속사","명사","동사"]},
+  {"q":"but","answer":"접속사","choices":["형용사","접속사","명사","동사"]},
+  {"q":"or","answer":"접속사","choices":["동사","형용사","접속사","명사"]},
+  {"q":"because","answer":"접속사","choices":["형용사","접속사","명사","동사"]},
+  {"q":"so","answer":"접속사","choices":["동사","형용사","접속사","명사"]},
+  {"q":"when","answer":"접속사","choices":["접속사","명사","동사","형용사"]},
+  {"q":"if","answer":"접속사","choices":["동사","형용사","접속사","명사"]},
+  {"q":"while","answer":"접속사","choices":["명사","동사","형용사","접속사"]},
+
+  {"q":"wow","answer":"감탄사","choices":["형용사","감탄사","명사","동사"]},
+  {"q":"ah","answer":"감탄사","choices":["동사","형용사","감탄사","명사"]},
+  {"q":"hey","answer":"감탄사","choices":["형용사","감탄사","명사","동사"]},
+  {"q":"oops","answer":"감탄사","choices":["감탄사","명사","동사","형용사"]},
+  {"q":"hurray","answer":"감탄사","choices":["동사","형용사","감탄사","명사"]},
+  {"q":"ouch","answer":"감탄사","choices":["감탄사","명사","동사","형용사"]},
+  {"q":"well done","answer":"감탄사","choices":["명사","동사","형용사","감탄사"]},
+  {"q":"bravo","answer":"감탄사","choices":["명사","동사","형용사","감탄사"]}
+];
 
 const lexicon = {
   subjects: ["I","You","He","She","We","They","My friend","The student"],
@@ -384,25 +702,49 @@ const lexicon = {
   beVerbs: ["am","are","is"],
   objects: ["English","soccer","a book","music","homework","a letter","my friend","the library"],
   complements: ["happy","kind","busy","tired","a student","my best friend","ready","hungry"],
-  adverbs: ["", "hard", "well", "carefully", "quickly", "every day", "after school"],
-  preps: ["", "at school", "in the library", "after lunch", "on Monday", "with my team", "in English class"]
+  adverbs: ["","hard","well","carefully","quickly","every day","after school"],
+  preps: ["","at school","in the library","after lunch","on Monday","with my team","in English class"]
 };
 
 function loadState(){
   const raw = localStorage.getItem(STORAGE_KEY);
-  if(raw) return JSON.parse(raw);
-  return { currentStudent:null, students:{}, order:[...Array(quizData.length).keys()], quizIndex:0, teacherUnlocked:false };
+  if(raw){
+    try {
+      return JSON.parse(raw);
+    } catch(e) {}
+  }
+  return {
+    currentStudent:null,
+    students:{},
+    order:[...Array(quizData.length).keys()],
+    quizIndex:0,
+    teacherUnlocked:false
+  };
 }
-function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
 let state = loadState();
 
-function studentKey(p){ return [p.grade,p.classNo,p.stuNo,p.stuName].join("-"); }
-function currentStudentObj(){ return state.currentStudent ? state.students[state.currentStudent] : null; }
+function studentKey(p){
+  return [p.grade,p.classNo,p.stuNo,p.stuName].join("-");
+}
+
+function currentStudentObj(){
+  return state.currentStudent ? state.students[state.currentStudent] : null;
+}
+
+function studentLabel(p){
+  return `${p.grade}-${p.classNo}-${p.stuNo} ${p.stuName}`;
+}
 
 function updateTeacherUI(){
   const btn = document.getElementById("neisTabBtn");
   const badge = document.getElementById("teacherModeBadge");
   const msg = document.getElementById("teacherModeMsg");
+
   if(state.teacherUnlocked){
     if(btn) btn.style.display = "";
     if(badge) badge.textContent = "열림";
@@ -411,17 +753,17 @@ function updateTeacherUI(){
     if(btn) btn.style.display = "none";
     if(badge) badge.textContent = "잠금";
     if(msg) msg.textContent = "기본 비밀번호: 9324";
-    if(document.getElementById("neis").classList.contains("hidden") === false){
-      document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
-      document.querySelector('.tab[data-tab="home"]').classList.add("active");
-      document.querySelectorAll(".tabpane").forEach(p=>p.classList.add("hidden"));
-      document.getElementById("home").classList.remove("hidden");
+
+    if(document.getElementById("neis") && !document.getElementById("neis").classList.contains("hidden")){
+      goTab("home");
     }
   }
 }
+
 function unlockTeacherMode(){
   const pw = prompt("교사 모드 비밀번호를 입력하세요.");
   if(pw === null) return;
+
   if(String(pw).trim() === TEACHER_PASSWORD){
     state.teacherUnlocked = true;
     saveState();
@@ -431,6 +773,7 @@ function unlockTeacherMode(){
     alert("비밀번호가 올바르지 않습니다.");
   }
 }
+
 function lockTeacherMode(){
   state.teacherUnlocked = false;
   saveState();
@@ -454,24 +797,37 @@ function saveProfile(){
     teamName: document.getElementById("teamName").value.trim() || "개인",
     teacherMemo: document.getElementById("teacherMemo").value.trim()
   };
+
   if(!p.grade || !p.classNo || !p.stuNo || !p.stuName){
     document.getElementById("profileMsg").textContent = "학년, 반, 번호, 이름을 입력해 주세요.";
     return;
   }
+
   const key = studentKey(p);
-  if(!state.students[key]) {
+
+  if(!state.students[key]){
     state.students[key] = {
-      profile:p, score:0, correct:0, answered:0, streak:0, bestStreak:0,
-      sentenceCount:0, lastSentence:"", lastAction:"학생 정보 저장", neis:""
+      profile:p,
+      score:0,
+      correct:0,
+      answered:0,
+      streak:0,
+      bestStreak:0,
+      sentenceCount:0,
+      lastSentence:"",
+      lastAction:"학생 정보 저장",
+      neis:""
     };
   } else {
     state.students[key].profile = p;
   }
+
   state.currentStudent = key;
   saveState();
   document.getElementById("profileMsg").textContent = `${p.stuName} 학생 정보가 저장되었습니다.`;
   updateAllViews();
 }
+
 function loadDemoProfile(){
   document.getElementById("grade").value = "1";
   document.getElementById("classNo").value = "3";
@@ -480,71 +836,101 @@ function loadDemoProfile(){
   document.getElementById("teamName").value = "Blue Team";
   document.getElementById("teacherMemo").value = "발표 적극적";
 }
+
 function resetStudentOnly(){
   const s = currentStudentObj();
   if(!s) return;
   if(!confirm("현재 학생 기록을 초기화할까요?")) return;
+
   state.students[state.currentStudent] = {
-    profile:s.profile, score:0, correct:0, answered:0, streak:0, bestStreak:0,
-    sentenceCount:0, lastSentence:"", lastAction:"초기화", neis:""
+    profile:s.profile,
+    score:0,
+    correct:0,
+    answered:0,
+    streak:0,
+    bestStreak:0,
+    sentenceCount:0,
+    lastSentence:"",
+    lastAction:"초기화",
+    neis:""
   };
-  saveState(); updateAllViews();
+
+  saveState();
+  updateAllViews();
 }
+
 function resetAll(){
   if(!confirm("전체 학생 데이터를 초기화할까요?")) return;
   localStorage.removeItem(STORAGE_KEY);
   state = loadState();
-  renderQuestion(); updateAllViews(); updateTeacherUI();
+  renderQuestion();
+  updateAllViews();
+  updateTeacherUI();
 }
 
 function updateKPIs(){
   const vals = Object.values(state.students);
   const count = vals.length;
-  const avg = count ? (vals.reduce((a,b)=>a+(b.score||0),0)/count).toFixed(1) : 0;
-  const top = count ? Math.max(...vals.map(v=>v.score||0)) : 0;
+  const avg = count ? (vals.reduce((a,b)=>a+(b.score||0),0) / count).toFixed(1) : 0;
+  const top = count ? Math.max(...vals.map(v => v.score || 0)) : 0;
   const sentenceCount = vals.reduce((a,b)=>a+(b.sentenceCount||0),0);
   const answered = vals.reduce((a,b)=>a+(b.answered||0),0);
+
   document.getElementById("kpiStudents").textContent = count;
   document.getElementById("kpiAvg").textContent = avg;
   document.getElementById("kpiTop").textContent = top;
   document.getElementById("kpiSentences").textContent = sentenceCount;
+
   const progress = count ? Math.min(100, Math.round(answered / (count * 10) * 100)) : 0;
   document.getElementById("classProgress").style.width = progress + "%";
 }
 
 function renderQuestion(){
   document.getElementById("qTotal").textContent = quizData.length;
+
   const idx = state.order[state.quizIndex % quizData.length];
   const item = quizData[idx];
+
   document.getElementById("qIndex").textContent = state.quizIndex + 1;
-  document.getElementById("quizProgress").style.width = Math.round(((state.quizIndex+1)/quizData.length)*100) + "%";
+  document.getElementById("quizProgress").style.width = Math.round(((state.quizIndex + 1) / quizData.length) * 100) + "%";
   document.getElementById("questionText").textContent = (item.q && String(item.q).trim()) ? `단어: ${item.q}` : "[문항 수정 필요]";
+
   const box = document.getElementById("choicesBox");
   box.innerHTML = "";
+
   item.choices.forEach(choice => {
     const btn = document.createElement("button");
     const posKey = Object.keys(posMeta).find(k => posMeta[k].ko === choice);
+
     btn.className = `choice ${posKey ? posMeta[posKey].cls : ""}`;
     btn.dataset.choice = choice;
     btn.innerHTML = `<span class="choice-ko">${choice}</span><span class="choice-en">${POS_EN[choice] || ""}</span>`;
     btn.onclick = () => answerQuestion(choice, item.answer);
+
     box.appendChild(btn);
   });
+
   document.getElementById("quizFeedback").textContent = "정답을 선택해 보세요.";
 }
+
 function answerQuestion(choice, answer){
   const s = currentStudentObj();
-  if(!s) {
+
+  if(!s){
     document.getElementById("quizFeedback").textContent = "먼저 학생 정보를 저장해 주세요.";
     return;
   }
+
   const buttons = [...document.querySelectorAll(".choice")];
   buttons.forEach(btn => btn.disabled = true);
+
   buttons.forEach(btn => {
     if(btn.dataset.choice === answer) btn.classList.add("correct");
     if(btn.dataset.choice === choice && choice !== answer) btn.classList.add("wrong");
   });
+
   s.answered += 1;
+
   if(choice === answer){
     s.score += 10;
     s.correct += 1;
@@ -557,42 +943,54 @@ function answerQuestion(choice, answer){
     s.lastAction = `퀴즈 오답: ${document.getElementById("questionText").textContent}`;
     document.getElementById("quizFeedback").textContent = `아쉽지만 정답은 ${answer}입니다.`;
   }
-  saveState(); updateAllViews();
+
+  saveState();
+  updateAllViews();
 }
+
 function nextQuestion(){
   state.quizIndex = (state.quizIndex + 1) % quizData.length;
-  saveState(); renderQuestion();
+  saveState();
+  renderQuestion();
 }
+
 function shuffleQuestions(){
-  state.order = [...state.order].sort(()=>Math.random()-0.5);
+  state.order = [...state.order].sort(() => Math.random() - 0.5);
   state.quizIndex = 0;
-  saveState(); renderQuestion();
+  saveState();
+  renderQuestion();
 }
 
 function fillSelect(id, arr){
   const sel = document.getElementById(id);
   sel.innerHTML = "";
+
   arr.forEach(v => {
     const o = document.createElement("option");
-    o.value = v; o.textContent = v === "" ? "(없음)" : v;
+    o.value = v;
+    o.textContent = v === "" ? "(없음)" : v;
     sel.appendChild(o);
   });
 }
+
 function updateBuilderUI(){
   const pattern = document.getElementById("pattern").value;
   const objBox = document.getElementById("objBox");
   const compBox = document.getElementById("compBox");
+
   objBox.style.display = pattern === "SVO" ? "block" : "none";
   compBox.style.display = pattern === "SBE" ? "block" : "none";
-  const vSel = document.getElementById("slotV");
+
   fillSelect("slotV", pattern === "SBE" ? lexicon.beVerbs : lexicon.verbs);
 }
-function addS(verb) {
+
+function addS(verb){
   if(verb === "be") return "is";
   if(verb.endsWith("y")) return verb.slice(0,-1) + "ies";
   if(["go","do","watch","wash","fix","mix"].includes(verb)) return verb + "es";
   return verb + "s";
 }
+
 function buildSentence(){
   const p = document.getElementById("pattern").value;
   const s = document.getElementById("slotS").value;
@@ -601,8 +999,10 @@ function buildSentence(){
   const c = document.getElementById("slotC").value;
   const adv = document.getElementById("slotAdv").value;
   const prep = document.getElementById("slotPrep").value;
+
   const third = ["He","She","My friend","The student"].includes(s);
   let sentence = "";
+
   if(p === "SV"){
     const vv = third ? addS(v) : v;
     sentence = `${s} ${vv} ${adv} ${prep}.`;
@@ -616,41 +1016,54 @@ function buildSentence(){
     else be = "is";
     sentence = `${s} ${be} ${c} ${prep}.`;
   }
+
   sentence = sentence.replace(/\s+/g," ").replace(" .",".").trim();
   document.getElementById("sentencePreview").textContent = sentence;
   return sentence;
 }
+
 function randomizeSentence(){
-  document.getElementById("pattern").selectedIndex = Math.floor(Math.random()*3);
+  document.getElementById("pattern").selectedIndex = Math.floor(Math.random() * 3);
   updateBuilderUI();
+
   ["slotS","slotV","slotO","slotC","slotAdv","slotPrep"].forEach(id => {
     const el = document.getElementById(id);
-    if(el && el.options.length) el.selectedIndex = Math.floor(Math.random()*el.options.length);
+    if(el && el.options.length){
+      el.selectedIndex = Math.floor(Math.random() * el.options.length);
+    }
   });
+
   buildSentence();
 }
+
 function saveSentence(){
   const s = currentStudentObj();
-  if(!s) {
+
+  if(!s){
     document.getElementById("sentenceMsg").textContent = "먼저 학생 정보를 저장해 주세요.";
     return;
   }
+
   const sentence = buildSentence();
   s.lastSentence = sentence;
   s.sentenceCount += 1;
   s.score += 20;
   s.lastAction = "문장 저장";
+
   saveState();
   document.getElementById("sentenceMsg").textContent = "문장이 저장되었습니다. +20점";
   updateAllViews();
 }
+
 function renderSentenceTable(){
   const rows = Object.values(state.students)
     .filter(x => x.lastSentence)
     .sort((a,b) => (b.score||0) - (a.score||0))
     .slice(0,12);
+
   const tb = document.querySelector("#sentenceTable tbody");
   tb.innerHTML = "";
+
   rows.forEach(s => {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td>${studentLabel(s.profile)}</td><td>${s.lastSentence}</td><td>${new Date().toLocaleDateString()}</td>`;
@@ -658,40 +1071,50 @@ function renderSentenceTable(){
   });
 }
 
-function studentLabel(p){ return `${p.grade}-${p.classNo}-${p.stuNo} ${p.stuName}`; }
-
 function generateNeis(){
   const s = currentStudentObj();
   if(!s) return;
+
   const level = levelFromScore(s.score);
-  const sentencePart = s.lastSentence ? `문장 생성 활동에서 '${s.lastSentence}'와 같은 기본 문장을 구성하며` : "문장 생성 활동에 참여하며";
-  const talkPart = s.profile.teacherMemo ? ` 수업 중 ${s.profile.teacherMemo}의 모습이 나타났으며` : "";
+  const sentencePart = s.lastSentence
+    ? `문장 생성 활동에서 '${s.lastSentence}'와 같은 기본 문장을 구성하며`
+    : "문장 생성 활동에 참여하며";
+  const talkPart = s.profile.teacherMemo
+    ? ` 수업 중 ${s.profile.teacherMemo}의 모습이 나타났으며`
+    : "";
+
   let text = "";
-  if(level.num === 5) {
+
+  if(level.num === 5){
     text = `품사별 색깔 규칙을 정확하게 이해하고 퀴즈 및 문장 생성 활동에 매우 적극적으로 참여함. ${sentencePart} 영어 어순과 품사 기능을 스스로 설명하는 능력이 우수함.${talkPart} 확장 활동에서도 높은 성취가 기대됨.`;
-  } else if(level.num === 4) {
+  } else if(level.num === 4){
     text = `품사별 색깔 규칙을 잘 이해하고 활동에 꾸준히 참여함. ${sentencePart} 기본 문장 구조를 비교적 정확하게 파악하고 설명하려는 태도가 좋음.${talkPart}`;
-  } else if(level.num === 3) {
+  } else if(level.num === 3){
     text = `품사 구분과 문장 구성 활동에 성실하게 참여함. ${sentencePart} 영어 어순에 대한 이해를 넓혀 가는 모습이 보이며 반복 활동에 안정적으로 참여함.${talkPart}`;
-  } else if(level.num === 2) {
+  } else if(level.num === 2){
     text = `품사 색깔 규칙을 익히기 위해 반복적으로 참여하며 기본 문장 구성 연습에 노력함. ${sentencePart} 교사의 도움을 바탕으로 핵심 규칙을 차근차근 익혀 가고 있음.${talkPart}`;
   } else {
     text = `품사 구분과 문장 구성의 기초를 익히는 단계로 활동에 차분히 참여함. 핵심 어휘와 기본 문장 구조를 반복 연습하며 점차 이해를 넓혀 가고 있음.${talkPart} 지속적인 연습을 통해 향상이 기대됨.`;
   }
+
   s.neis = text;
   saveState();
+
   document.getElementById("neisText").value = text;
   updateAllViews();
 }
+
 function copyNeis(){
   const el = document.getElementById("neisText");
   el.select();
   document.execCommand("copy");
 }
+
 function renderNeisTable(){
   const data = Object.values(state.students).filter(s => s.neis);
   const tb = document.querySelector("#neisTable tbody");
   tb.innerHTML = "";
+
   data.forEach(s => {
     const lv = levelFromScore(s.score);
     const tr = document.createElement("tr");
@@ -702,22 +1125,29 @@ function renderNeisTable(){
 
 function renderRanking(){
   const rows = Object.values(state.students).sort((a,b) => (b.score||0) - (a.score||0) || (b.correct||0) - (a.correct||0));
+
   const podium = document.getElementById("podium");
   podium.innerHTML = "";
+
   const boxes = [
     { cls:"second", idx:1, medal:"🥈" },
     { cls:"first", idx:0, medal:"🥇" },
     { cls:"third", idx:2, medal:"🥉" }
   ];
+
   boxes.forEach(info => {
     const s = rows[info.idx];
     const div = document.createElement("div");
     div.className = `box ${info.cls}`;
-    div.innerHTML = s ? `<div style="font-size:26px">${info.medal}</div><div>${s.profile.stuName}</div><div style="font-size:12px;color:#475569;">${s.profile.teamName}</div><div style="font-size:24px;margin-top:8px;">${s.score}</div>` : `<div style="margin-top:30px;color:#94a3b8">빈 자리</div>`;
+    div.innerHTML = s
+      ? `<div style="font-size:26px">${info.medal}</div><div>${s.profile.stuName}</div><div style="font-size:12px;color:#475569;">${s.profile.teamName}</div><div style="font-size:24px;margin-top:8px;">${s.score}</div>`
+      : `<div style="margin-top:30px;color:#94a3b8">빈 자리</div>`;
     podium.appendChild(div);
   });
+
   const tb = document.querySelector("#rankTable tbody");
   tb.innerHTML = "";
+
   rows.forEach((s, i) => {
     const lv = levelFromScore(s.score).label;
     const cls = i===0 ? "rank-top1" : i===1 ? "rank-top2" : i===2 ? "rank-top3" : "";
@@ -730,6 +1160,7 @@ function renderRanking(){
 
 function updateLive(){
   const s = currentStudentObj();
+
   document.getElementById("liveStudent").textContent = s ? studentLabel(s.profile) : "-";
   document.getElementById("liveTeam").textContent = s ? s.profile.teamName : "-";
   document.getElementById("liveScore").textContent = s ? s.score : 0;
@@ -737,12 +1168,21 @@ function updateLive(){
   document.getElementById("liveAnswered").textContent = s ? s.answered : 0;
   document.getElementById("liveStreak").textContent = s ? s.streak : 0;
   document.getElementById("liveLastAction").textContent = s ? s.lastAction : "-";
+
   const level = s ? levelFromScore(s.score) : {num:1,label:"1단계 도움 필요"};
   document.getElementById("liveLevel").textContent = level.label;
+
   const card = document.getElementById("levelCard");
-  card.className = `level-card level-${level.num}`;
-  card.textContent = `현재 수준: ${level.label}`;
-  if(s && s.neis) document.getElementById("neisText").value = s.neis;
+  if(card){
+    card.className = `level-card level-${level.num}`;
+    card.textContent = `현재 수준: ${level.label}`;
+  }
+
+  if(s && s.neis){
+    document.getElementById("neisText").value = s.neis;
+  } else if(document.getElementById("neisText")) {
+    document.getElementById("neisText").value = "";
+  }
 }
 
 function updateAllViews(){
@@ -754,10 +1194,19 @@ function updateAllViews(){
 }
 
 function goTab(id){
+  if(id === "neis" && !state.teacherUnlocked){
+    alert("교사 모드를 먼저 열어 주세요.");
+    return;
+  }
+
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tabpane").forEach(p => p.classList.add("hidden"));
-  document.querySelector(`.tab[data-tab="${id}"]`).classList.add("active");
-  document.getElementById(id).classList.remove("hidden");
+
+  const tabBtn = document.querySelector(`.tab[data-tab="${id}"]`);
+  const tabPane = document.getElementById(id);
+
+  if(tabBtn) tabBtn.classList.add("active");
+  if(tabPane) tabPane.classList.remove("hidden");
 }
 
 document.querySelectorAll(".tab").forEach(btn => {
@@ -765,8 +1214,13 @@ document.querySelectorAll(".tab").forEach(btn => {
 });
 
 function escXml(s){
-  return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  return String(s ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
 }
+
 function buildXmlSheet(name, rows){
   return `<Worksheet ss:Name="${escXml(name)}"><Table>` +
     rows.map(r => `<Row>` + r.map(v => {
@@ -775,62 +1229,99 @@ function buildXmlSheet(name, rows){
     }).join("") + `</Row>`).join("") +
     `</Table></Worksheet>`;
 }
+
 function downloadExcelXml(){
   const rows = Object.values(state.students).sort((a,b)=>(b.score||0)-(a.score||0));
+
   const resultRows = [["학년","반","번호","이름","팀","점수","정답수","응답수","문장수","마지막문장","수준","세특"]];
   rows.forEach(s => {
     resultRows.push([
-      s.profile.grade, s.profile.classNo, s.profile.stuNo, s.profile.stuName, s.profile.teamName,
-      s.score||0, s.correct||0, s.answered||0, s.sentenceCount||0, s.lastSentence||"",
-      levelFromScore(s.score).label, s.neis||""
+      s.profile.grade,
+      s.profile.classNo,
+      s.profile.stuNo,
+      s.profile.stuName,
+      s.profile.teamName,
+      s.score||0,
+      s.correct||0,
+      s.answered||0,
+      s.sentenceCount||0,
+      s.lastSentence||"",
+      levelFromScore(s.score).label,
+      s.neis||""
     ]);
   });
+
   const rankRows = [["순위","학생","팀","점수","정답","문장 저장","수준"]];
-  rows.forEach((s,i)=> rankRows.push([i+1, studentLabel(s.profile), s.profile.teamName, s.score||0, s.correct||0, s.sentenceCount||0, levelFromScore(s.score).label]));
+  rows.forEach((s,i) => {
+    rankRows.push([i+1, studentLabel(s.profile), s.profile.teamName, s.score||0, s.correct||0, s.sentenceCount||0, levelFromScore(s.score).label]);
+  });
+
   const neisRows = [["학생","수준","세특"]];
-  rows.forEach(s => neisRows.push([studentLabel(s.profile), levelFromScore(s.score).label, s.neis||""]));
+  rows.forEach(s => {
+    neisRows.push([studentLabel(s.profile), levelFromScore(s.score).label, s.neis||""]);
+  });
+
   const xml = `<?xml version="1.0"?>
-  <?mso-application progid="Excel.Sheet"?>
-  <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
-   xmlns:o="urn:schemas-microsoft-com:office:office"
-   xmlns:x="urn:schemas-microsoft-com:office:excel"
-   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
-    <Styles>
-      <Style ss:ID="Header"><Font ss:Bold="1"/><Interior ss:Color="#D9EAF7" ss:Pattern="Solid"/></Style>
-    </Styles>
-    ${buildXmlSheet("학생결과", resultRows)}
-    ${buildXmlSheet("순위표", rankRows)}
-    ${buildXmlSheet("NEIS", neisRows)}
-  </Workbook>`;
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  ${buildXmlSheet("학생결과", resultRows)}
+  ${buildXmlSheet("순위표", rankRows)}
+  ${buildXmlSheet("NEIS", neisRows)}
+</Workbook>`;
+
   const blob = new Blob([xml], {type:"application/vnd.ms-excel"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = "중1_8품사_수업결과_정리.xml";
   a.click();
 }
+
 function downloadCSV(){
   const rows = [["학년","반","번호","이름","팀","점수","정답수","응답수","문장수","마지막문장","수준","세특"]];
-  Object.values(state.students).sort((a,b)=>(b.score||0)-(a.score||0)).forEach(s => {
-    rows.push([s.profile.grade,s.profile.classNo,s.profile.stuNo,s.profile.stuName,s.profile.teamName,s.score||0,s.correct||0,s.answered||0,s.sentenceCount||0,s.lastSentence||"",levelFromScore(s.score).label,s.neis||""]);
-  });
+
+  Object.values(state.students)
+    .sort((a,b)=>(b.score||0)-(a.score||0))
+    .forEach(s => {
+      rows.push([
+        s.profile.grade,
+        s.profile.classNo,
+        s.profile.stuNo,
+        s.profile.stuName,
+        s.profile.teamName,
+        s.score||0,
+        s.correct||0,
+        s.answered||0,
+        s.sentenceCount||0,
+        s.lastSentence||"",
+        levelFromScore(s.score).label,
+        s.neis||""
+      ]);
+    });
+
   const csv = rows.map(r => r.map(v => `"${String(v).replaceAll('"','""')}"`).join(",")).join("\n");
-  const blob = new Blob(["\ufeff"+csv], {type:"text/csv;charset=utf-8;"});
+  const blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8;"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = "중1_8품사_수업결과.csv";
   a.click();
 }
 
+/* 초기화 */
 fillSelect("slotS", lexicon.subjects);
 fillSelect("slotV", lexicon.verbs);
 fillSelect("slotO", lexicon.objects);
 fillSelect("slotC", lexicon.complements);
 fillSelect("slotAdv", lexicon.adverbs);
 fillSelect("slotPrep", lexicon.preps);
+
 updateBuilderUI();
 buildSentence();
 renderQuestion();
 updateAllViews();
+updateTeacherUI();
 </script>
 </body>
 </html>
